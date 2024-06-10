@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    margin: 20px auto;
+    width: 700px;
+    border: 1px solid black;
+    padding: 50px;
+}
+
+.heading {
+    text-align: left;        
+    padding: 10px;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.sub_row{
+    width: 100%;
+}
+
+input[type="submit"]{
+    border: none;
+    background-color: red;
+    color: white;
+    padding: 10px 25px;
+    font-size: 20px;
+}
+
+.input{
+    width: 70%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select,
+textarea{
+    width: 99%;
+    padding: 0 1%;
+    height: 30px;
+}
+    
+input[type="password"]{
+    width: 93%;
+    height: 30px;
+    padding-left: 1%;
+    padding-right: 6%;
+}
+
+textarea{
+    height: 100px;
+}
+    
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label{
+    width: 30%;
+    place-content: center;
+}
+
+.message {
+    width: 70%;
+    margin-left: 32%;
+    color: red;
+    display: none;
+}
+
+.label{
+    width: 30%;
+    place-content: center;
+}
+
+.password{
+    width: 70%;
+    position: relative;
+}
+
+.fa-solid{
+    position: absolute;
+    right: 5px;
+    top: 8px;
+}
+
+.msg_div{
+    width: 100%;
+}
+
+
+
+.input_row{
+    width: 100%;
+    display: flex;
+}
+
+.input_row .blank{
+    height: 20px;
+    width: 30%;
+}
+.input_btn{
+    width:20%;
+    margin-left: 9px;
+}
+
+.final_msg_div{
+    width: 50%;
+    place-content: center;
+    color: red;
+}
+
+#submit_msg{
+    width: 100%;
+}
+    
+
+</style>
+<body>
+    <div class="container" id="marksheet">
+        <div class="heading">
+            <h2>Register Here</h2>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>Firstname</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="firstname">
+                </div>
+            </div>
+            <div class="msg_div">
+                <label class="message" id="firstname_msg"></label>
+            </div>
+        </div>
+      
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>Lastname</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="lastname">
+                </div>
+            </div>
+            <div class="msg_div">
+                <label class="message" id="lastname_msg"></label>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>Gender</label>
+                </div>
+                <div class="input">
+                    <input type="radio" name="gender" id="male" value="male"> <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="female"> <label for="female">Female</label>
+                </div>
+            
+            </div>
+            <div class="msg_div">
+                <label class="message" id="gender_msg"></label>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>Address</label>
+                </div>
+                <div class="input">
+                    <textarea name="address" id="address" placeholder="Enter character between 35 to 200"></textarea>
+                </div>
+            </div>
+            <div class="msg_div">
+                <label class="message" id="address_msg"></label>
+            </div>
+        </div>
+      
+
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>City</label>
+                </div>
+                <div class="input">
+                    <select name="City" id="city">
+                        <option value="">--select--</option>
+                        <option value="surat">surat</option>
+                        <option value="varodara">varodara</option>
+                        <option value="ahmedabad">ahmedabad</option>
+                        <option value="rajkot">rajkot</option>
+                        <option value="dahod">dahod</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="msg_div">
+                <label class="message" id="city_msg"></label>
+            </div>
+        </div>
+
+      
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>Mobile</label>
+                </div>
+                <div class="input">
+                    <input type="number" id="mobile" maxlength="10">
+                </div>
+            </div>
+            <div class="msg_div">
+                <label class="message" id="mobile_msg"></label>
+            </div>
+        </div>
+
+              
+        <div>
+            <div class="row">
+                <div class="label">
+                    <label>Email</label>
+                </div>
+                <div class="input">
+                    <input type="email" id="email" placeholder="abc@xyz.com">
+                </div>
+            </div>
+            <div class="msg_div">
+                <label class="message" id="email_msg"></label>
+            </div>
+        </div>
+
+        
+        <div>
+            <div class="row">
+
+                <div class="label">
+                    <label>Password</label>
+                </div>
+
+                <div class="password">
+                    <input type="password" id="password" placeholder="Enter 8 to 15 character">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                
+            </div>
+
+            <div class="msg_div">
+                <label class="message" id="password_msg"></label>
+            </div>
+
+        </div>
+
+
+        <div>
+            <div class="row">
+                <label>Confirm Password</label>
+                <div class="password">
+                    <input type="password" id="c_password">
+                <i class="fa-solid fa-eye"></i>
+                <!-- <i class="fa-solid fa-eye-slash"></i> -->
+                </div>
+            </div>
+            <div class="msg_div">
+                <label class="message" id="c_password_msg"></label>
+            </div>
+        </div>
+
+
+        <div>
+
+            <div class="input_row">
+                <div class="blank"> 
+                </div>
+
+                <div class="input_btn">
+                    <input type="submit" id="submit">
+                </div>
+            
+                <div class="final_msg_div">
+                    <label id="submit_msg"></label>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+<script>
+    
+document.addEventListener('DOMContentLoaded', function () {
+
+let firstname = document.getElementById('firstname');
+let lastname = document.getElementById('lastname');
+let gender = document.getElementsByName('gender');
+let address = document.getElementById('address');
+let city = document.getElementById('city');
+let mobile = document.getElementById('mobile');
+let email = document.getElementById('email');
+let password = document.getElementById('password');
+let c_password = document.getElementById('c_password');
+let submit = document.getElementById('submit');
+
+let firstname_msg = document.getElementById('firstname_msg');
+let lastname_msg = document.getElementById('lastname_msg');
+let gender_msg = document.getElementById('gender_msg');
+let address_msg = document.getElementById('address_msg');
+let city_msg = document.getElementById('city_msg');
+let mobile_msg = document.getElementById('mobile_msg');
+let email_msg = document.getElementById('email_msg');
+let password_msg = document.getElementById('password_msg');
+let c_password_msg = document.getElementById('c_password_msg');
+let submit_msg = document.getElementById('submit_msg');
+
+let nameRegex = /^[A-Za-z]+$/;
+let mobileRegex = /^\d{10}$/;
+let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+document.querySelectorAll('.password i').forEach(eyeIcon => {
+    eyeIcon.addEventListener('click', () => {
+        let input = eyeIcon.previousElementSibling;
+        if (input.type === 'password') {
+            input.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    });
+});
+
+function validateFirstName() {
+    if (!firstname.value.match(nameRegex)) {
+        firstname_msg.textContent = "Firstname should contain only alphabets.";
+        firstname_msg.style.display = "block";
+        return false;
+    } else {
+        firstname_msg.textContent = "";
+        firstname_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateLastName() {
+    if (!lastname.value.match(nameRegex)) {
+        lastname_msg.textContent = "Lastname should contain only alphabets.";
+        lastname_msg.style.display = "block";
+        return false;
+    } else {
+        lastname_msg.textContent = "";
+        lastname_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateGender() {
+    if (![...gender].some(g => g.checked)) {
+        gender_msg.textContent = "Gender is required.";
+        gender_msg.style.display = "block";
+        return false;
+    } else {
+        gender_msg.textContent = "";
+        gender_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateAddress() {
+    if (address.value.length < 35 || address.value.length > 200) {
+        address_msg.textContent = "Address must be between 35 to 200 characters.";
+        address_msg.style.display = "block";
+        return false;
+    } else {
+        address_msg.textContent = "";
+        address_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateCity() {
+    if (!city.value) {
+        city_msg.textContent = "City is required.";
+        city_msg.style.display = "block";
+        return false;
+    } else {
+        city_msg.textContent = "";
+        city_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateMobile() {
+    if (!mobile.value.match(mobileRegex)) {
+        mobile_msg.textContent = "Mobile number should be exactly 10 digits.";
+        mobile_msg.style.display = "block";
+        return false;
+    } else {
+        mobile_msg.textContent = "";
+        mobile_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateEmail() {
+    if (!email.value.match(emailRegex)) {
+        email_msg.textContent = "Please enter a valid email address.";
+        email_msg.style.display = "block";
+        return false;
+    } else {
+        email_msg.textContent = "";
+        email_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validatePassword() {
+    if (password.value.length < 8 || password.value.length > 15) {
+        password_msg.textContent = "Password must be between 8 to 15 characters.";
+        password_msg.style.display = "block";
+        return false;
+    } else {
+        password_msg.textContent = "";
+        password_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateConfirmPassword() {
+    if (c_password.value !== password.value) {
+        c_password_msg.textContent = "Passwords do not match.";
+        c_password_msg.style.display = "block";
+        return false;
+    } else {
+        c_password_msg.textContent = "";
+        c_password_msg.style.display = "none";
+        return true;
+    }
+}
+
+function validateForm() {
+    let valid = true;
+    valid = validateFirstName() && valid;
+    valid = validateLastName() && valid;
+    valid = validateGender() && valid;
+    valid = validateAddress() && valid;
+    valid = validateCity() && valid;
+    valid = validateMobile() && valid;
+    valid = validateEmail() && valid;
+    valid = validatePassword() && valid;
+    valid = validateConfirmPassword() && valid;
+
+    if (!valid) {
+        submit_msg.textContent = "Please fix the errors above.";
+        submit_msg.style.display = "block";
+    } else {
+        submit_msg.textContent = "";
+        submit_msg.style.display = "none";
+    }
+    return valid;
+}
+
+firstname.addEventListener('blur', validateFirstName);
+lastname.addEventListener('blur', validateLastName);
+address.addEventListener('blur', validateAddress);
+city.addEventListener('blur', validateCity);
+mobile.addEventListener('blur', validateMobile);
+email.addEventListener('blur', validateEmail);
+password.addEventListener('blur', validatePassword);
+c_password.addEventListener('blur', validateConfirmPassword);
+gender.forEach(g => g.addEventListener('blur', validateGender));
+
+submit.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (validateForm()) {
+        submit_msg.textContent = "Form submitted successfully!";
+        submit_msg.style.color = "green";
+        submit_msg.style.display = "block";
+    }
+});
+});
+
+</script>
+</body>
+</html>

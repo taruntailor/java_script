@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even or Odd Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+<h2>check input number odd even</h2>
+    enter your number:
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <br>
+    <button onclick="checkEvenOrOdd()">Check</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function checkEvenOrOdd() {
+        const number = document.getElementById('numberInput').value;
+        const result = document.getElementById('result');
+
+        if (number === '') {
+            result.textContent = 'Please enter a number.';
+            return;
+        }
+
+        if (number % 2 === 0) {
+            result.textContent = `answer is:number is even.`;
+        } else {
+            result.textContent = `answer is:number is odd.`;
+        }
+    }
+</script>
+
+</body>
+</html>

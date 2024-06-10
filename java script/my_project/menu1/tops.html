@@ -1,0 +1,75 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tops.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> -->
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <h1><a href="">moon</a></h1>
+                </div>
+                <div class="togglebtn">
+                    <button class="btn" onclick="showMenu()">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">Accounts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+   <div class="sec-1">
+        <img src="img1.jpg"alt="">
+    </div>
+
+    <script src="coun.js"></script>
+    <script>
+        function showMenu() {
+    let nav = document.querySelector(".nav");
+    nav.classList.toggle("show-nav")
+}
+
+var head = document.querySelector("header")
+window.addEventListener("scroll", () => {
+    var current = window.scrollY;
+    if (current > 0) {
+        head.classList.add("header-change")
+    } else {
+        head.classList.remove("header-change")
+    }
+})
+var index = 1;
+moveSlide(index);
+function slideShow(num_slide) {
+    moveSlide(index += num_slide)
+}
+function moveSlide(n) {
+    debugger
+    let slide = document.getElementsByClassName("slider");
+    if (n > slide.length) {
+        index = 1;
+    }
+    if (n < 1) {
+        index = slide.length;
+    }
+    for (let i = 0; i < slide.length; i++) {
+        slide[i].style.display = "none"
+    }
+    slide[index - 1].style.display = "block"
+}
+    </script>
+</body>
+
+</html>

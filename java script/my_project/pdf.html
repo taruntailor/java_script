@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 100%;
+            width: 100%;
+            place-content: center;
+        }
+        .innerContainer{
+            height: 500px;
+            width: 500px;
+            padding: 50px;
+            border: 1px solid gray;
+            margin: auto;
+        }
+        .tot-rem{
+            display: grid;
+        }
+        .choice {
+            display: flex;
+        }
+        .choice .selection{
+            border: 1px solid gray;
+            margin-right: 5px;
+            padding: 5px;
+        }
+        .part2{
+            height: 150px;
+        }
+        .choice-inputs {
+            padding: 10px;
+        }
+        .paid-fees {
+            padding: 10px;
+        }
+        .name{
+            display: grid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="innerContainer">
+
+            <h1>Payment Module</h1>
+            <form action="">
+                <div class="name">
+                    <label for="">Enter Name:</label>
+                    <input type="text" name="" id="name">
+                </div>
+
+                <div class="part2" style="display: flex;">
+                    <div>
+                        <div class="tot-rem">
+                            <label for="">Total Fees:</label>
+                            <input type="number" id="totalFees">
+                            <label for="">Remaining Fees:</label>
+                            <input type="number" id="remainingFees">
+                        </div>
+                    </div>
+                    <div>
+
+                        <div class="paid-fees">
+                            <div>
+                                <label for="">Paid Fees:</label>
+                            </div>
+                            <div class="choice">
+                                <div class="selection">
+                                    <input type="radio" name="choice" id="cheque" >
+                                    <label for="">cheque</label>
+                                </div>
+                                <div class="selection">
+                                    <input type="radio" name="choice" id="online" >
+                                    <label for="">online</label>
+                                </div>
+                                <div class="selection">
+                                    <input type="radio" name="choice" id="cash" >
+                                    <label for="">cash</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="choice-inputs">
+
+                            <div id="cheque-box">
+                                <div class="CHN">
+                                    <label for="">Cheque Number:</label>
+                                    <input type="text" name="" id="chq_no">
+                                </div>
+                                <div class="AMT">
+                                    <label for="">Amount:</label>
+                                    <input type="number" name="" id="chq_amt">
+                                </div>
+                            </div>
+                            
+                            <div id="online-box">
+                                <div class="UPI">
+                                    <label for="">UPI ID:</label>
+                                    <input type="text" id="upi_no">
+                                </div>
+
+                                <div class="AMT">
+                                    <label for="">Amount:</label>
+                                    <input type="number" name="" id="upi_amt">
+                                </div>
+                            </div>
+                            
+                            <div id="cash-box">
+                                <div class="AMT">
+                                    <label for="">Amount:</label>
+                                    <input type="number" name="" id="cash_amt">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button onclick="print_form()">convert pdf</button>
+                </div>
+        </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const chequeRadio = document.getElementById("cheque");
+            const onlineRadio = document.getElementById("online");
+            const cashRadio = document.getElementById("cash");
+
+            const chequeinputs = document.getElementById("cheque-box");
+            const onlineinputs = document.getElementById("online-box");
+            const cashinputs = document.getElementById("cash-box");
+
+            const totalFeesInput = document.getElementById("totalFees");
+            const remainingFeesInput = document.getElementById("remainingFees");
+
+            chequeinputs.style.display = "none";
+            onlineinputs.style.display = "none";
+            cashinputs.style.display = "none";
+
+            chequeRadio.addEventListener("change", () => {
+                chequeinputs.style.display = "block";
+                onlineinputs.style.display = "none";
+                cashinputs.style.display = "none";
+            });
+
+            onlineRadio.addEventListener("change", () => {
+                chequeinputs.style.display = "none";
+                onlineinputs.style.display = "block";
+                cashinputs.style.display = "none";
+            });
+
+            cashRadio.addEventListener("change", () => {
+                chequeinputs.style.display = "none";
+                onlineinputs.style.display = "none";
+                cashinputs.style.display = "block";
+            });
+
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener("input", calculateRemainingFees);
+            });
+
+            function calculateRemainingFees() {
+                const totalFees = parseFloat(totalFeesInput.value) || 0;
+                const paidAmount = (
+                    (parseFloat(document.getElementById("chq_amt").value) || 0) +
+                    (parseFloat(document.getElementById("upi_amt").value) || 0) +
+                    (parseFloat(document.getElementById("cash_amt").value) || 0)
+                );
+                const remainingFees = totalFees - paidAmount;
+                remainingFeesInput.value = remainingFees > 0 ? remainingFees : 0;
+            }
+        });
+
+        function print_form() {
+            const buttonToHide = document.querySelector(".button");
+            buttonToHide.style.display = "none";
+            window.print();
+            buttonToHide.style.display = "block";
+        }
+    </script>
+</body>
+</html>

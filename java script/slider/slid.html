@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+
+    .home-s {
+        position: relative;
+    }
+
+    .slider {
+        position: absolute;
+        width: 100%;
+        display: none;
+    }
+
+    img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .controls {
+        position: absolute;
+        z-index: 1;
+        font-size: 50px;
+        top: 250px;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .controls:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .left {
+        left: 0;
+    }
+
+    .right {
+        right: 0;
+    }
+
+    .fade {
+        animation: fadeEffect 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    @keyframes fadeEffect {
+        0% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.7;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+<body>
+    
+    <div class="home-s">
+        <div class="slider fade">
+            <img src="1.jpg" alt="">
+        </div>
+        <div class="slider fade">
+            <img src="2.avif" alt="">
+        </div>
+        <div class="slider fade">
+            <img src="3.jpg" alt="">
+        </div>
+        <div class="slider fade">
+            <img src="4.jpg" alt="">
+        </div>
+    </div>
+
+    <button class="controls left" onclick="slideShow(-1)">&lt;</button>
+    <button class="controls right" onclick="slideShow(1)">&gt;</button>
+
+
+    <script>
+        
+        var index = 1;
+        moveSlide(index);
+        function slideShow(num_slide) {
+            moveSlide(index += num_slide)
+        }
+        function moveSlide(n) {
+            debugger
+            let slide = document.getElementsByClassName("slider");
+            if (n > slide.length) {
+                index = 1;
+            }
+            if (n < 1) {
+                index = slide.length;
+            }
+            for (let i = 0; i < slide.length; i++) {
+                slide[i].style.display = "none"
+            }
+            slide[index - 1].style.display = "block"
+        }
+    </script>
+</body>
+</html>

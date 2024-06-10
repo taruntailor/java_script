@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://w7.pngwing.com/pngs/290/579/png-transparent-html-html-logo-html-5-html-five-logo-html-5-logo-programming-langugae-3d-icon-thumbnail.png" type="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>menubar</title>
+</head>
+<style>
+    
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    position  : fixed;
+    width     : 100%;
+    z-index   : 1;
+    top       : 0;
+    /* transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) background-color; */
+    background-color: pink;
+
+}
+
+/* random class */
+.header-change {
+}
+
+.container {
+    max-width    : 1200px;
+    margin       : auto;
+    padding-left : 10px;
+    padding-right: 10px;
+}
+
+.menubar {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    flex-wrap      : wrap;
+    padding        : 15px 0;
+}
+
+.menubar .logo {
+    flex: 1 1 50%;
+}
+
+.menubar .logo a {
+    color: blue;
+    font-size: 40px;
+}
+
+.menubar .options {
+    display        : flex;
+    justify-content: end;
+    flex           : 1;
+}
+
+.menubar .options ul{
+    display: flex;
+    gap    : 30px;
+}
+
+.menubar .options ul li a {
+    color: white;
+    font-size: 20px;
+}
+
+.menubar .toggle {
+    display   : none;
+    text-align: right;
+    flex      : 1 1 50%;
+}
+
+.menubar .btn {
+    height       : 29px;
+    width        : 29px;
+    color        : white;
+    background   : transparent;
+    border       : 2px solid white;
+    font-size    : 22px;
+    border-radius: 5px;
+}
+
+img {
+    /* height    : 1500px; */
+    height     : 100%;
+    width     : 100%;
+    object-fit: cover;
+    filter    : brightness(50%);
+}
+
+/* random class */
+.menubar .show-nav {
+    background-color: rgb(255, 107, 132);
+}
+
+.menubar .show-nav ul {
+    display       : flex;
+    flex-direction: column;
+    text-align    : center;
+}
+
+/* responsive */
+@media (max-width:576px) {
+    .menubar .toggle {
+        display: block;
+    }
+
+    .menubar .options {
+        display: none;
+    }
+
+    .menubar .show-nav {
+        padding-top: 30px;
+        display    : block;
+    }
+}
+
+@media (min-width:576px) {
+    .menubar .toggle {
+        display: block;
+    }
+
+    .menubar .options {
+        display: none;
+    }
+
+    .menubar .show-nav {
+        padding-top: 30px;
+        display    : block;
+    }
+}
+
+@media (min-width:992px) {
+    .menubar .toggle {
+        display: none;
+    }
+
+    .menubar .options {
+        display: block;
+    }
+}
+
+</style>
+<body>
+    <header>
+        <div class="container">
+
+            <div class="menubar">
+                <div class="logo">
+                    <a href="">
+                        TAILOR
+                    </a>
+                </div>
+       
+                <div class="toggle">
+                    <button class="btn" onclick="showMenu()">
+                        <i class="fa-solid fa-bars" id="icon"></i>
+                    </button>
+                </div>
+
+                <div class="options">
+
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Help</a></li>
+                        <li></li>
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </header>
+
+    <section>
+        <!-- <img src="https://png.pngtree.com/background/20210717/original/pngtree-beautiful-abstract-mobile-wallpaper-in-pink-color-picture-image_1433465.jpg"
+            alt=""> -->
+
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        
+function showMenu() {
+    let icon = document.querySelector("#icon");
+    let nav = document.querySelector(".options");
+    nav.classList.toggle("show-nav");
+
+    if (nav.classList.contains("show-nav")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+    } 
+    else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+    }
+}
+
+var head = document.querySelector("header");
+window.addEventListener("scroll", () => {
+    var current = window.scrollY;
+    if (current > 0) {
+        head.classList.add("header-change");
+    } 
+    else {
+        head.classList.remove("header-change");
+    }
+});
+
+    </script>
+</body>
+</html>

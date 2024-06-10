@@ -1,0 +1,47 @@
+<!-- (1) Write a javascript code and display maths table as follow. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+  
+</head>
+<body>
+
+<div>
+    <label for="">enter your number</label>
+    <input type="number" id="tableNumber" placeholder="Enter a number" />
+    <br>
+    <button onclick="generateTable()">display</button>
+    <div id="tableContainer"></div>
+</div>
+
+<script>
+    function generateTable() {
+        const number = document.getElementById('tableNumber').value;
+        const container = document.getElementById('tableContainer');
+
+        if (!number) {
+            container.innerHTML = '<p>Please enter a number.</p>';
+            return;
+        }
+
+        let tableHTML = '<table>';
+        tableHTML += '<tr><th>Number</th><th>Multiplication</th><th>Result</th></tr>';
+
+        for (let i = 1; i <= 10; i++) {
+            tableHTML += `<tr>
+                            <td>${number}</td>
+                            <td>${i}</td>
+                            <td>${number * i}</td>
+                          </tr>`;
+        }
+
+        tableHTML += '</table>';
+        container.innerHTML = tableHTML;
+    }
+</script>
+
+</body>
+</html>

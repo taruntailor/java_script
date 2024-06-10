@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+    
+    .container {
+        text-align: center;
+        border: 1px solid black;
+        padding: 25px;
+    }
+    
+    .color-box {
+        width: 200px;
+        height: 200px;
+        margin-top: 20px;
+        border: 2px solid black;
+        place-content: center;
+        align-items: center;
+    }
+    </style>
+<body>
+    <div class="container">
+        <label>Set Color :</label>
+        <input type="color" id="color_picker">
+        <button id="set_color">Set Color</button>
+        <hr>
+        <div id="color_display" class="color-box">Selected Color Display</div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    let colorPicker = document.getElementById('color_picker');
+    let applyColorButton = document.getElementById('set_color');
+    let colorDisplay = document.getElementById('color_display');
+
+    applyColorButton.addEventListener('click', function() {
+        let selectedColor = colorPicker.value;
+        colorDisplay.style.backgroundColor = selectedColor;
+    });
+});
+    </script>
+</body>
+</html>

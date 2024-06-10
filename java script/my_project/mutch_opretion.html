@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        input {
+            margin: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin: 41px -50px;           
+             font-size: 18px;
+        }
+        .boder {
+    border: 1px solid;
+    width: 50%;
+    margin: auto;
+    background: aquamarine;
+}
+.fun {
+    text-align: justify;
+    padding: 0 25%;
+}
+    </style>
+</head>
+<body>
+
+    <div class="boder">
+        <h1>Math Operations</h1>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    <br>
+    <input type="number" id="num2" placeholder="Enter second number">
+
+   <div class="main" style="display: flex;">
+    <div class="fun">
+        <button onclick="performOperation('+')">+</button>
+        <button onclick="performOperation('-')">-</button>
+        <button onclick="performOperation('*')">*</button>
+        <br>
+        <button onclick="performOperation('/')">/</button>
+        <button onclick="performOperation('%')">%</button>
+    </div>
+    <div id="result"></div>
+
+   </div>
+
+    </div>
+
+    <script>
+        function performOperation(operation) {
+            // Get the input values
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+
+            // Perform the selected operation
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                case '%':
+                    result = num1 % num2;
+                    break;
+                default:
+                    result = 'Invalid operation';
+            }
+
+            // Display the result
+            document.getElementById('result').innerText = `Result: ${result}`;
+        }
+    </script>
+
+</body>
+</html>

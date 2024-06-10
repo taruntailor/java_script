@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 50px;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    marksheet for information tech. 
+    <h2>entre marks</h2>
+    <div>
+         <label for="">c laung</label>
+        <input type="number" id="subject1" placeholder="" />
+        <br>
+        <label for="">c++ laung</label>
+        <input type="number" id="subject2" placeholder="" />
+        <br>
+        <label for="">date base</label>
+        <input type="number" id="subject3" placeholder="" />
+        <br>
+        <label for="">html</label>
+        <input type="number" id="subject4" placeholder="" />
+        <br>
+        <label for="">css</label>
+        <input type="number" id="subject5" placeholder="" />
+        <br>
+        <label for="">php</label>
+        <input type="number" id="subject6" placeholder="" />
+        <br>
+        <label for="">core java</label>
+        <input type="number" id="subject7" placeholder="" />
+    </div>
+    <button onclick="calculateResult()">Calculate Result</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateResult() {
+        const marks = [];
+        for (let i = 1; i <= 7; i++) {
+            const mark = parseFloat(document.getElementById(`subject${i}`).value);
+            if (isNaN(mark) || mark < 0 || mark > 100) {
+                document.getElementById('result').innerHTML = `<p class="error">Please enter valid marks for all subjects (0-100).</p>`;
+                return;
+            }
+            marks.push(mark);
+        }
+
+        const total = marks.reduce((sum, mark) => sum + mark, 0);
+        const percentage = (total / 350) * 100;
+        const resultText = percentage >= 40 ? 'Pass' : 'Fail';
+
+        document.getElementById('result').innerHTML = `
+            <p>Total Marks: ${total}</p>
+            <p>Percentage: ${percentage.toFixed(2)}%</p>
+            <p>Result: ${resultText}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
