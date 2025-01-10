@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-image: url(https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQF2wn5c1nth5EfqmZtErZMhncF9_oPbGVDwW0z7zgl1avXzgI6-E3pLr8mnZWVkxBlDvLxFtDyZzqzs5OOLeMyE9BM69SAbZ7KP3tRPNXHvbz13xQpN3izLRU01U2Y0rremHh0KV6UJwY&usqp=CAc);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 150px;
+    position: relative;
+}
+/*  */
+nav{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px 60px 0px 60px;
+}
+nav li{
+    display: inline-block;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+nav li span{
+    padding-left: 5px;    
+}
+li a{
+    text-decoration: none;
+    background-color: #ffff;
+    text-transform: capitalize;
+    color: black;
+    padding: 5px;
+
+}
+.cart a{
+    background-color: rgb(74, 167, 230);
+    color: #ffff;
+}
+
+
+.containor{
+    margin:10px 80px;
+}
+
+
+.prodectlist{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+.iteam{
+    background-color: rgb(253, 251, 249);
+padding: 10px;
+}
+.iteam img{
+    margin: auto;
+    /* padding: 10px; */
+    width: 100%;
+    height: 300px;
+}
+.prodectlist .brand{
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 5px;
+}
+.prodectlist .price{
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 5px;
+}
+.prodectlist button{
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.prodectlist button:hover{
+    transition: 2s ease;
+    background-color: rgba(75, 74, 74, 0.468);
+}
+
+/* -------cart page------------- */
+.products-container{
+    max-width: 650px;
+    justify-content: space-around;
+    margin:  0 auto;
+    margin-top: 50px;
+}
+.flex{
+    display: flex;
+    gap: 34px;
+    align-items: center;
+}
+
+.products-container i{
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 5px;
+}
+.product-header{
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    gap: 70px;
+    justify-content: flex-start;
+    border-bottom: 2px solid black;
+    text-align: center;
+    margin:  0 auto;
+}
+.prodect-titel{
+    width: 20%;
+}
+.price{
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+.quantity{
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+.total{
+    width: 16%;
+    display: flex;
+    align-items: center;
+}
+.Quantity {
+    width: 18%;
+}
+.baskettotalcontainer{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 10px ;
+}
+.baskettotaltitle{
+    width: 22%;
+}
+.baskettotal{
+    width: 25%;
+}
+.products {
+    width: 836px;
+}
